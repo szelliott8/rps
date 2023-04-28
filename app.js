@@ -10,7 +10,7 @@ function getComputerChoice(){
     }
     else {
 
-        computerChoice = 'scissors '
+        computerChoice = 'scissors'
     }
     return computerChoice;
 }
@@ -36,23 +36,45 @@ function playRound(compChoice, playerChoice) {
     if (compChoice === playerChoice){
         console.log("Draw")
     }
-    else if ((compChoice ==='rock' && playerChoice === 'scissors' )||
-        (compChoice==='paper' && playerChoice==='rock')||
-        (compChoice ==='scissors' && playerChoice==='paper')) {
-            console.log("Loser!")
+    else if (
+        (compChoice ==='rock' && playerChoice === 'scissors' ) ||
+        (compChoice==='paper' && playerChoice==='rock') ||
+        (compChoice ==='scissors' && playerChoice==='paper')
+        ) 
+        {
+            console.log("Loser!");
+            increaseScore("Computer")
         }
-        else(
-            console.log("Winner / Gagnant")
-        )
+        else {
+            console.log("Winner / Gagnant");
+            increaseScore("Player");
+        }
+        
     
 }
 
 function playGame(){
     let gameLength = parseInt(prompt("How many games do you want to play"))
+
     for (let i=0;i<gameLength;i++) {
         playRound(getComputerChoice(),getPlayerChoice())
+        
     }
 }
+
+function increaseScore(winner) {
+    if (winner === "Computer") {
+    computerScore++;
+    }
+    else {
+        playerScore++
+    }
+    console.log(`Score: ${playerScore} : ${computerScore}`)
+}
+let playerScore = 0;
+let computerScore = 0;
+
 playGame();
+
 
 
