@@ -30,7 +30,7 @@ function getPlayerChoice() {
     }
 }
 
-function playGame(compChoice, playerChoice) {
+function playRound(compChoice, playerChoice) {
     console.log(`Computer Choice: ${compChoice}`)
     console.log(`Player Choice: ${playerChoice}`)
     if (compChoice === playerChoice){
@@ -46,5 +46,13 @@ function playGame(compChoice, playerChoice) {
         )
     
 }
-playGame(getComputerChoice(),getPlayerChoice())
+
+function playGame(){
+    let gameLength = parseInt(prompt("How many games do you want to play"))
+    for (let i=0;i<gameLength;i++) {
+        playRound(getComputerChoice(),getPlayerChoice())
+    }
+}
+playGame();
+
 
